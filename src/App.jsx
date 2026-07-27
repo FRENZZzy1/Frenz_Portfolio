@@ -23,6 +23,7 @@ export default function App() {
         <main>
           <Hero />
           <About />
+          <Projects />
           <Experience />
           <Certificates />
           <Achievements />
