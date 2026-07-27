@@ -17,7 +17,7 @@ export const profile = {
   // Put a real photo at public/images/profile.jpg (or any path under public/)
   // and update this to match, e.g. "/images/profile.jpg".
   // Leave as null to show your initials instead.
-  photo: "/public/profile.jpg",
+  photo: "/profile.jpg",
 };
 
 export const about = `Hi, I'm Frenz Allen Paller, a fourth-year Bachelor of Science in Information Technology (BSIT) student at STI College Global City and a consistent President's Lister with a cumulative GWA of 1.35. I am passionate about software development and enjoy building innovative solutions that solve real-world problems.
@@ -43,9 +43,9 @@ export const projects = [
     link: "#",
     repo: "https://github.com/FRENZZzy1/STI_ERMS",
     gallery: [
-      "/public/projects_images/erms1_11zon.jpg",
-      "/public/projects_images/erms2_11zon.jpg",
-      "/public/projects_images/erms3_11zon.jpg",
+      "/projects_images/erms1_11zon.jpg",
+      "/projects_images/erms2_11zon.jpg",
+      "/projects_images/erms3_11zon.jpg",
     ],
   },
   {
@@ -56,12 +56,12 @@ export const projects = [
     link: "#",
     repo: "https://github.com/FRENZZzy1/MOBSYS_PROJECT",
     gallery: [
-      "/public/projects_images/medi1.png",
-      "/public/projects_images/med2.png",
-      "/public/projects_images/medi2.png",
-      "/public/projects_images/medi4.png",
-      "/public/projects_images/medi5.png",
-      "/public/projects_images/medi6.png"
+      "/projects_images/medi1.png",
+      "/projects_images/med2.png",
+      "/projects_images/medi3.png",
+      "/projects_images/medi4.png",
+      "/projects_images/medi5.png",
+      "/projects_images/medi6.png"
     ],
   },
   {
@@ -72,8 +72,8 @@ export const projects = [
     link: "#",
     repo: "https://github.com/FRENZZzy1/RAG_STUDENTS",
     gallery: [
-      "/public/projects_images/edu1.png",
-      "/public/projects_images/edu2.png"
+      "/projects_images/edu1.png",
+      "/projects_images/edu2.png"
     ],
   },
 ];
@@ -100,7 +100,7 @@ export const certificates = [
     title: "AI Fundamentals: Foundation of Understanding AI",
     issuer: "Cisco Networking Academy",
     date: "2026",
-    image: "/public/AI_CERTI.png",
+    image: "/AI_CERTI.png",
     link: "",
   },
 
@@ -109,7 +109,7 @@ export const certificates = [
     title: "JavaScript Essentials l",
     issuer: "Cisco Networking Academy",
     date: "2026",
-    image: "/public/Javascript_l.png",
+    image: "/javascript_l.png",
     link: "",
   },
 
@@ -118,7 +118,7 @@ export const certificates = [
     title: "Java Fundamentals",
     issuer: "Oracle",
     date: "2024",
-    image: "/public/oracle.png",
+    image: "/oracle.png",
     link: "#",
   },
 ];
@@ -130,14 +130,14 @@ export const achievements = [
     title: "Champion in Android Hackathon Winner | STI College Global City",
     description: "Led a team to build a full e-commerce mobile app in a live hackathon setting, winning 1st place at STI Global City's CollaboraTech Android Hackathon.",
     date: "2026",
-    image: "/public/Achievements/champion.jpg"
+    image: "/Achievements/champion.jpg"
   },
   {
     id: "a02",
     title: "Represented STI College Global City in the IT OLYMPICS DATABASE Competition",
     description: "Represented the school in the Database category of the IT Olympics, tackling advanced MySQL query challenges — from multi-table joins to complex filtering and aggregation — in a live competitive format.",
     date: "2025",
-    image: "/public/Achievements/database.jpg"
+    image: "/Achievements/database.jpg"
     
   },
 ];
