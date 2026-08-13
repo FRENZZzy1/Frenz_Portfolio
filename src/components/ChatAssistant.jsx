@@ -45,34 +45,47 @@ Formatting Guidelines:
 ${buildContext()}
 ---`;
 
-async function askOpenRouter(messages) {
-  const apiKey = import.meta.env.VITE_OPENROUTER_API_KEY;
-  const model = import.meta.env.VITE_OPENROUTER_MODEL || "openai/gpt-4o-mini";
+async function askGemini(messages) {
+  const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+  const model = import.meta.env.VITE_GEMINI_MODEL || "gemini-3.5-flash-lite";
 
   if (!apiKey) {
     throw new Error("missing_key");
   }
 
-  const res = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-      "HTTP-Referer": window.location.origin,
-      "X-Title": `${profile.name} Portfolio`,
-    },
-    body: JSON.stringify({
-      model,
-      messages: [{ role: "system", content: SYSTEM_PROMPT }, ...messages],
-    }),
-  });
+  // Gemini expects role "user" | "model" (not "assistant"), and each
+  // message's text wrapped in a parts array.
+  const contents = messages.map((m) => ({
+    role: m.role === "assistant" ? "model" : "user",
+    parts: [{ text: m.content }],
+  }));
+
+  const res = await fetch(
+    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-goog-api-key": apiKey,
+      },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: SYSTEM_PROMPT }] },
+        contents,
+        generationConfig: {
+          thinkingConfig: { thinkingLevel: "low" },
+        },
+      }),
+    }
+  );
 
   if (!res.ok) {
     throw new Error(`request_failed_${res.status}`);
   }
 
   const data = await res.json();
-  return data.choices?.[0]?.message?.content ?? "Sorry, I couldn't generate a response.";
+  const parts = data.candidates?.[0]?.content?.parts ?? [];
+  const text = parts.map((p) => p.text ?? "").join("");
+  return text || "Sorry, I couldn't generate a response.";
 }
 
 export default function ChatAssistant() {
@@ -112,12 +125,12 @@ export default function ChatAssistant() {
     setLoading(true);
 
     try {
-      const reply = await askOpenRouter(nextMessages);
+      const reply = await askGemini(nextMessages);
       setMessages([...nextMessages, { role: "assistant", content: reply }]);
     } catch (err) {
       const message =
         err.message === "missing_key"
-          ? "The assistant isn't configured yet — add VITE_OPENROUTER_API_KEY to your .env file."
+          ? "The assistant isn't configured yet — add VITE_GEMINI_API_KEY to your .env file."
           : "Something went wrong reaching the assistant. Try again in a moment.";
       setMessages([...nextMessages, { role: "assistant", content: message }]);
     } finally {

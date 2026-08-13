@@ -138,7 +138,14 @@ export const achievements = [
     description: "Represented the school in the Database category of the IT Olympics, tackling advanced MySQL query challenges — from multi-table joins to complex filtering and aggregation — in a live competitive format.",
     date: "2025",
     image: "/Achievements/database.jpg"
-    
+  },
+
+  {
+    id: "a03",
+    title: "SHS Graduation with Honors and Most outstanding ICT Student Awardee",
+    description: "Graduated from Senior High School with honors and was awarded as the most outstanding ICT student in the school.",
+    date: "2022",
+    image: "/Achievements/grad.jpg"
   },
 ];
 
