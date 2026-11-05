@@ -130,10 +130,17 @@ export const achievements = [
     title: "Champion in Android Hackathon Winner | STI College Global City",
     description: "Led a team to build a full e-commerce mobile app in a live hackathon setting, winning 1st place at STI Global City's CollaboraTech Android Hackathon.",
     date: "2026",
-    image: "/Achievements/champion.jpg"
+    image: "/Achievements/itolympic2.jpg"
   },
   {
     id: "a02",
+    title: "Champion in Android Hackathon Winner | STI College Global City",
+    description: "Led a team to build a full e-commerce mobile app in a live hackathon setting, winning 1st place at STI Global City's CollaboraTech Android Hackathon.",
+    date: "2026",
+    image: "/Achievements/champion.jpg"
+  },
+  {
+    id: "a03",
     title: "Represented STI College Global City in the IT OLYMPICS DATABASE Competition",
     description: "Represented the school in the Database category of the IT Olympics, tackling advanced MySQL query challenges — from multi-table joins to complex filtering and aggregation — in a live competitive format.",
     date: "2025",
@@ -141,7 +148,7 @@ export const achievements = [
   },
 
   {
-    id: "a03",
+    id: "a04",
     title: "SHS Graduation with Honors and Most outstanding ICT Student Awardee",
     description: "Graduated from Senior High School with honors and was awarded as the most outstanding ICT student in the school.",
     date: "2022",
