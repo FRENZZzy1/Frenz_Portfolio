@@ -127,10 +127,10 @@ export const certificates = [
 export const achievements = [
   {
     id: "a01",
-    title: "Champion in Android Hackathon Winner | STI College Global City",
-    description: "Led a team to build a full e-commerce mobile app in a live hackathon setting, winning 1st place at STI Global City's CollaboraTech Android Hackathon.",
+    title: "5th Place — IT Olympics Cybersecurity Category",
+    description: "Represented STI GLOBAL CITY in the Cybersecurity category of the IT Olympics, specializing in web exploitation and endpoint protection while tackling security challenges involving vulnerability identification, threat analysis, and defensive techniques, earning 5th place among 30 schools from within and outside the NCR.",
     date: "2026",
-    image: "/Achievements/itolympic2.jpg"
+    image: "/Achievements/itolympics2.jpg"
   },
   {
     id: "a02",
@@ -142,7 +142,7 @@ export const achievements = [
   {
     id: "a03",
     title: "Represented STI College Global City in the IT OLYMPICS DATABASE Competition",
-    description: "Represented the school in the Database category of the IT Olympics, tackling advanced MySQL query challenges — from multi-table joins to complex filtering and aggregation — in a live competitive format.",
+    description: "Represented STI GLOBAL CITY in the Database category of the IT Olympics, tackling advanced MySQL query challenges — from multi-table joins to complex filtering and aggregation — in a live competitive format.",
     date: "2025",
     image: "/Achievements/database.jpg"
   },
