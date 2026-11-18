@@ -16,7 +16,7 @@ function CopyButton({ code }) {
   return (
     <button
       onClick={handleCopy}
-      className="absolute right-2 top-2 rounded-sm border border-line bg-surface px-2 py-1 text-[10px] font-mono uppercase tracking-wider text-ink-muted transition-colors hover:text-teal"
+      className="absolute right-2 top-2 rounded-xl border border-line bg-surface px-2 py-1 text-[10px] font-mono uppercase tracking-wider text-ink-muted transition-colors hover:text-plasma"
     >
       {copied ? "Copied" : "Copy"}
     </button>
@@ -40,7 +40,7 @@ export default function FormattedMessage({ content }) {
       const str = m[0];
       if (str.startsWith("`") && str.endsWith("`")) {
         parts.push(
-          <code key={`c-${key++}`} className="rounded bg-surface px-1 py-0.5 font-mono text-[11px] text-teal">
+          <code key={`c-${key++}`} className="rounded bg-surface px-1 py-0.5 font-mono text-[11px] text-plasma">
             {str.slice(1, -1)}
           </code>
         );
@@ -57,7 +57,7 @@ export default function FormattedMessage({ content }) {
               href={match[2]}
               target="_blank"
               rel="noopener noreferrer"
-              className="underline decoration-teal/30 underline-offset-2 transition-colors hover:text-amber hover:decoration-amber/50"
+              className="underline decoration-plasma/30 underline-offset-2 transition-colors hover:text-volt hover:decoration-volt/50"
             >
               {match[1]}
             </a>
@@ -84,7 +84,7 @@ export default function FormattedMessage({ content }) {
       elements.push(
         <div key={`pre-${key++}`} className="relative my-3">
           <CopyButton code={code.join("\n")} />
-          <pre className="overflow-x-auto rounded-sm border border-line bg-surface-2 p-3 pt-9">
+          <pre className="overflow-x-auto rounded-xl border border-line bg-surface-2 p-3 pt-9">
             <code className="font-mono text-xs leading-relaxed text-ink">{code.join("\n")}</code>
           </pre>
         </div>
@@ -120,7 +120,7 @@ export default function FormattedMessage({ content }) {
       elements.push(
         <ul key={`ul-${key++}`} className="my-3 list-inside list-disc space-y-1 pl-1 text-sm text-ink/90">
           {items.map((it, idx) => (
-            <li key={idx} className="pl-0.5 marker:text-amber">{parseInline(it)}</li>
+            <li key={idx} className="pl-0.5 marker:text-volt">{parseInline(it)}</li>
           ))}
         </ul>
       );

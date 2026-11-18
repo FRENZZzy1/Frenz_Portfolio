@@ -1,29 +1,60 @@
+import { useRef } from "react";
 import { experience } from "../data";
+import { useScrollVar } from "../hooks";
+import { Reveal, SectionHeading, TiltCard } from "./ui";
 
 export default function Experience() {
+  const listRef = useRef(null);
+  // The gradient line "draws" down the timeline as you scroll.
+  useScrollVar(listRef, { start: 0.7, end: 0.5 });
+
   return (
-    <section id="experience" className="border-b border-line">
-      <div className="mx-auto max-w-5xl px-6 py-20 sm:py-28">
-        <p className="font-mono text-xs tracking-widest text-amber">03 — EXPERIENCE</p>
-        <h2 className="mt-3 font-display text-3xl">Where I've worked</h2>
+    <section id="experience" className="relative py-24 sm:py-36">
+      <div className="mx-auto max-w-7xl px-6">
+        <SectionHeading index="03" label="Experience" title="Where I've worked" />
 
-        <ol className="relative mt-10 space-y-10 border-l border-line pl-8">
-          {experience.map((job) => (
-            <li key={job.id} className="relative">
-              {/* Tick mark on the timeline */}
-              <span className="absolute -left-[calc(2rem+5px)] top-1.5 h-2.5 w-2.5 rounded-full border-2 border-amber bg-bg" />
+        <ol ref={listRef} className="relative ml-2 space-y-14 pl-9 sm:ml-6 sm:pl-16" style={{ "--p": 0 }}>
+          <span aria-hidden="true" className="absolute left-0 top-0 h-full w-px bg-line" />
+          <span
+            aria-hidden="true"
+            className="absolute left-0 top-0 h-full w-px origin-top bg-gradient-to-b from-volt via-plasma to-coral"
+            style={{ transform: "scaleY(var(--p))" }}
+          />
 
-              <p className="font-mono text-xs text-ink-muted">{job.period}</p>
-              <h3 className="mt-1 font-display text-xl">{job.role}</h3>
-              <p className="font-mono text-sm text-teal">{job.org}</p>
+          {experience.map((job) => {
+            const current = /present/i.test(job.period);
+            return (
+              <li key={job.id} className="relative">
+                {/* timeline node */}
+                <span
+                  aria-hidden="true"
+                  className="absolute top-8 -left-[calc(2.25rem+7px)] grid h-3.5 w-3.5 place-items-center rounded-full bg-bg sm:-left-[calc(4rem+7px)]"
+                >
+                  <span className={`h-3.5 w-3.5 rounded-full border-2 border-volt ${current ? "pulse-dot bg-volt" : "bg-bg"}`} />
+                </span>
 
-              <ul className="mt-3 list-inside list-disc space-y-1 text-sm text-ink-muted">
-                {job.points.map((point, i) => (
-                  <li key={i}>{point}</li>
-                ))}
-              </ul>
-            </li>
-          ))}
+                <Reveal>
+                  <TiltCard max={2} className="rounded-3xl border border-line bg-surface/80 p-7 backdrop-blur sm:p-10">
+                    <div className="flex flex-wrap items-center gap-3 font-mono text-xs text-ink-muted">
+                      <span>{job.period.toUpperCase()}</span>
+                      {current && <span className="rounded-full bg-volt/15 px-2.5 py-0.5 text-volt">NOW</span>}
+                    </div>
+                    <h3 className="mt-4 font-display text-3xl font-bold tracking-tight sm:text-5xl">{job.role}</h3>
+                    <p className="mt-2 font-mono text-sm text-plasma sm:text-base">@ {job.org}</p>
+
+                    <ul className="mt-8 space-y-3">
+                      {job.points.map((point, i) => (
+                        <li key={i} className="flex gap-3 text-ink-muted">
+                          <span className="mt-0.5 font-mono text-volt">→</span>
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  </TiltCard>
+                </Reveal>
+              </li>
+            );
+          })}
         </ol>
       </div>
     </section>

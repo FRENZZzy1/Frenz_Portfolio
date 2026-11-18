@@ -149,7 +149,7 @@ export default function ChatAssistant() {
 <div className="fixed bottom-6 right-6 z-40">
   <button
     onClick={() => setOpen(!open)}
-    className={`flex h-16 w-16 items-center justify-center rounded-full border-2 border-amber bg-surface text-amber shadow-xl transition-transform duration-300 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber ${
+    className={`flex h-16 w-16 items-center justify-center rounded-full border-2 border-volt bg-surface text-volt shadow-xl transition-transform duration-300 hover:scale-105 active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-volt ${
       !open ? "animate-float" : ""
     }`}
     aria-expanded={open}
@@ -190,17 +190,17 @@ export default function ChatAssistant() {
 
       {/* Main Chat Drawer */}
       {open && (
-        <div className="fixed bottom-24 right-6 z-40 flex h-[30rem] w-[22rem] max-w-[calc(100vw-3rem)] flex-col border border-line bg-surface shadow-xl">
+        <div className="animate-pop-in fixed bottom-24 right-6 z-40 flex h-[30rem] w-[22rem] max-w-[calc(100vw-3rem)] flex-col overflow-hidden rounded-2xl border border-line bg-surface shadow-2xl shadow-black/60">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-line px-4 py-3">
             <div>
-              <p className="font-mono text-xs text-amber">Happy to answer your questions!</p>
+              <p className="font-mono text-xs text-volt">Happy to answer your questions!</p>
               <p className="mt-0.5 text-xs text-ink-muted">Ask about {profile.name}</p>
             </div>
             {messages.length > 0 && (
               <button
                 onClick={clearChat}
-                className="font-mono text-[10px] text-ink-muted hover:text-amber transition-colors"
+                className="font-mono text-[10px] text-ink-muted hover:text-volt transition-colors"
                 title="Reset conversation"
               >
                 [clear]
@@ -218,7 +218,7 @@ export default function ChatAssistant() {
                     <button
                       key={s}
                       onClick={() => sendMessage(s)}
-                      className="w-fit rounded-sm border border-line px-3 py-1.5 text-left font-mono text-xs text-ink-muted hover:border-teal hover:text-teal transition-colors"
+                      className="w-fit rounded-xl border border-line px-3 py-1.5 text-left font-mono text-xs text-ink-muted hover:border-plasma hover:text-plasma transition-colors"
                     >
                       {s}
                     </button>
@@ -230,9 +230,9 @@ export default function ChatAssistant() {
             {messages.map((m, i) => (
               <div
                 key={i}
-                className={`max-w-[88%] rounded-sm px-3.5 py-2.5 text-sm ${
+                className={`max-w-[88%] rounded-xl px-3.5 py-2.5 text-sm ${
                   m.role === "user"
-                    ? "ml-auto bg-amber text-bg font-medium"
+                    ? "ml-auto bg-volt text-bg font-medium"
                     : "bg-surface-2 text-ink chat-markdown"
                 }`}
               >
@@ -245,10 +245,10 @@ export default function ChatAssistant() {
                       ul: ({ node, ...props }) => <ul className="mb-2 list-disc pl-4 space-y-1" {...props} />,
                       ol: ({ node, ...props }) => <ol className="mb-2 list-decimal pl-4 space-y-1" {...props} />,
                       li: ({ node, ...props }) => <li className="text-sm" {...props} />,
-                      strong: ({ node, ...props }) => <strong className="font-semibold text-amber" {...props} />,
+                      strong: ({ node, ...props }) => <strong className="font-semibold text-volt" {...props} />,
                       a: ({ node, ...props }) => (
                         <a
-                          className="text-teal underline underline-offset-2 hover:opacity-80"
+                          className="text-plasma underline underline-offset-2 hover:opacity-80"
                           target="_blank"
                           rel="noreferrer"
                           {...props}
@@ -256,7 +256,7 @@ export default function ChatAssistant() {
                       ),
                       code: ({ node, inline, ...props }) => (
                         <code
-                          className="rounded bg-bg px-1 py-0.5 font-mono text-xs text-teal"
+                          className="rounded bg-bg px-1 py-0.5 font-mono text-xs text-plasma"
                           {...props}
                         />
                       ),
@@ -269,7 +269,7 @@ export default function ChatAssistant() {
             ))}
 
             {loading && (
-              <div className="max-w-[85%] rounded-sm bg-surface-2 px-3.5 py-2.5 font-mono text-xs text-ink-muted flex items-center gap-1.5">
+              <div className="max-w-[85%] rounded-xl bg-surface-2 px-3.5 py-2.5 font-mono text-xs text-ink-muted flex items-center gap-1.5">
                 <span className="inline-block animate-pulse">thinking...</span>
               </div>
             )}
@@ -288,12 +288,12 @@ export default function ChatAssistant() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask a question..."
-              className="flex-1 rounded-sm border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-amber"
+              className="flex-1 rounded-xl border border-line bg-bg px-3 py-2 text-sm text-ink outline-none focus:border-volt"
             />
             <button
               type="submit"
               disabled={loading || !input.trim()}
-              className="rounded-sm border border-amber bg-amber px-3 py-2 font-mono text-xs text-bg transition-opacity disabled:opacity-40"
+              className="rounded-xl border border-volt bg-volt px-3 py-2 font-mono text-xs text-bg transition-opacity disabled:opacity-40"
             >
               Send
             </button>

@@ -1,6 +1,28 @@
 # My Portfolio
 
-A React + Vite + Tailwind CSS portfolio.
+A React + Vite + Tailwind CSS portfolio with a motion-graphics design.
+
+## Design & motion
+
+Dark ink background with a volt-lime / plasma-violet palette, Syne display type,
+and motion throughout. Everything is hand-built (no animation library) and
+respects `prefers-reduced-motion`.
+
+- **Boot loader** — liquid-fill counter + decrypting name, then the screen splits open
+- **Hero** — kinetic letter-by-letter name, interactive particle constellation that
+  reacts to the cursor, morphing photo blob with a spinning gradient ring,
+  rotating badge, cycling role line
+- **Skills marquee** — two crossing, counter-scrolling bands
+- **About** — paragraph lights up word-by-word as you scroll; animated stat counters
+- **Projects** — sticky stacking cards (the one underneath scales + dims), spotlight hover,
+  phone-fan for mobile-app screenshots, browser frame for web screenshots
+- **Experience** — timeline line draws itself on scroll
+- **Certificates / Achievements** — 3D-tilt cards, sheen sweep, clip-path image reveals
+- **Extras** — custom cursor ring with labels, floating nav with active-section pill,
+  scroll-progress bar, magnetic buttons, film grain, live Manila clock
+
+Tweak the palette in `src/index.css` (`@theme` block). Tweak motion in the
+individual components; shared effects live in `src/components/ui.jsx` and `src/hooks.js`.
 
 ## Run it locally
 
@@ -75,9 +97,14 @@ tells visitors it isn't configured yet, rather than failing silently.
 ```
 src/
   data.js                     <- edit your content here
+  hooks.js                    <- scroll / in-view / image-preload helpers
   App.jsx                     <- assembles the page from the sections below
   components/
-    Nav.jsx                   <- top navigation, with a mobile menu toggle
+    ui.jsx                    <- shared motion pieces (ScrambleText, TiltCard, Magnetic, ...)
+    CustomCursor.jsx          <- trailing cursor ring + ambient glow
+    ParticleField.jsx         <- canvas constellation behind the hero
+    Marquee.jsx               <- crossing skills bands
+    Nav.jsx                   <- floating nav, progress bar, mobile menu
     Hero.jsx                  <- intro section + profile photo
     About.jsx                 <- bio + skills
     Projects.jsx               <- project cards with image gallery
