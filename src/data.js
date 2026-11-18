@@ -156,6 +156,15 @@ export const achievements = [
   },
 ];
 
+// Headline numbers shown in the About section (animated counters).
+// The counts are derived from the lists above; edit GWA by hand.
+export const stats = [
+  { label: "GWA", value: 1.35, decimals: 2, note: "President's Lister" },
+  { label: "Projects", value: projects.length },
+  { label: "Wins & awards", value: achievements.length },
+  { label: "Certificates", value: certificates.length },
+];
+
 // ---------------------------------------------------------------------------
 // Chat assistant config — used by src/components/ChatAssistant.jsx.
 // The assistant is given a summary of everything above as context, so it can
