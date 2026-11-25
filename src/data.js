@@ -66,7 +66,7 @@ export const projects = [
   },
   {
     id: "03",
-    title: "EduGuard",
+    title: "Eduguard",
     blurb: "built a simple full-stack academic early-warning system using PHP, MySQL, and vanilla JS. EduGuard aggregates each student's grades, attendance, and assignment data to compute a weighted risk score, then calls an LLM (via OpenRouter's free-tier models) to generate a structured AI risk report — complete with key concerns, strengths, subject-level breakdowns, and prioritized recommendations for faculty intervention.",
     stack: ["MySQL", "CSS", "JS", "HTML", "OpenRouter API"],
     link: "#",
